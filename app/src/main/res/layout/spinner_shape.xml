@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/custom_row_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_large"
+    android:fontFamily="monospace"
+    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+    android:textColor="@color/blue_grey_900"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+

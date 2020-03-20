@@ -1,0 +1,162 @@
+<resources>
+    <string name="app_name">Ehsan Donation</string>
+    <string name="ehsan">Ehsan</string>
+    <string name="login">Login</string>
+    <string name="new_user">New user?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
+    <string name="full_name">Full Name</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="already_user">Already user ?</string>
+    <string name="valid_email">Enter a Valid Email.</string>
+    <string name="cannot_be_empty">Cannot be null or empty.</string>
+    <string name="at_least_three_character">At least three characters.</string>
+    <string name="at_least_six_character">At least six characters.</string>
+    <string name="firebase_users">users</string>
+    <string name="successfully_sign_up">Thanks! your account has been successfully created.</string>
+    <string name="error_sign_up">Oops, something went wrong!</string>
+    <string name="authentication_failed">Authentication Failed</string>
+    <string name="home">Home</string>
+    <string name="about_us">About Us</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="setting">Setting</string>
+    <string name="contact_us">Contact-Us</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="confrim_exit">Please click BACK again to exit.</string>
+    <string name="profile">Profile</string>
+    <string name="charitable_organizations">Charitable Organizations</string>
+    <string name="make_donation">Make Donation</string>
+    <string name="our_team">Our Team</string>
+    <string name="mission">Mission</string>
+    <string name="rand">Rand Tahat</string>
+    <string name="yara">Yara Sakhnini</string>
+    <string name="executive_officer">Executive Officer</string>
+    <string name="marketing">Marketing</string>
+    <string name="long_mission">In the United States, in 2007, the Bureau of Labor Statistics found that American households in the lowest fifth in terms of wealth, gave on average a higher percentage of their incomes to charitable organizations than those households in the highest fifth.[1] Charity Navigator writes that, according to Giving USA, Americans gave $298 billion in 2011 (about 2% of GDP).[2] The majority of donation were from individuals (73%), then from bequests (about 12%), foundations (2%) and less than 1% from corporations. The largest sector to receive donation was religious organizations (32%), then education (13%). Giving has increased in 3 out of 4 years since 1971 (with the occasional declines occurring around recession years).[2]  Blackbaud reports that, in the US, online giving in 2012 grew 11% on a year-over-year basis. The percentage of total fundraising that comes from online giving was about 7% in 2012. This was an increase from 6% in 2011 and is nearing the record level of 8% from 2010 when online giving spiked in response to Haitian earthquake relief efforts. Steve MacLaughlin notes in the report that \"the Internet has now become the first-response channel of choice for donors during disasters and other emergency events.\" [3]</string>
+    <string name="current_address">Jordan , Irbid , Ar Ramtha 3030، Ar-Ramtha</string>
+    <string name="call_us">Call Us</string>
+    <string name="your_message_here">Your message here.</string>
+    <string name="send_email">Send Email</string>
+    <string name="cannot_call">Cannot call right now.</string>
+    <string name="communicate">Communicate with us.</string>
+    <string name="clothes">Clothes Donate</string>
+    <string name="books">Books Donate</string>
+    <string name="furniture">Furniture Donate</string>
+    <string name="medical_equipment_donate">Medical equipment Donate</string>
+    <string name="clothes_tag">Clothes Donate</string>
+    <string name="books_tag">Books Donate</string>
+    <string name="furniture_tag">Furniture Donate</string>
+    <string name="medical_tag">Medical Donate</string>
+    <string name="donate_type">DonationType</string>
+    <string name="select_category">Select Category</string>
+    <string name="select_items">Select Items</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_item_selected">No items selected.</string>
+    <string name="description">Description</string>
+    <string name="firebase_charities">charities</string>
+    <string name="your_deecription_here">You description here.</string>
+    <string name="select_charity">Select Charity</string>
+    <string name="no_charity_selected">No charity selected.</string>
+    <string name="must_fill_description">Must fill description.</string>
+    <string name="you_are_not_donator">You are not donator</string>
+    <string name="no_gmail">Gmail App is not installed</string>
+    <string name="communicate_with">Communicate with</string>
+    <string name="charity_name">Charity Name</string>
+    <string name="charity_email">Charity Email</string>
+    <string name="charity_phone">Charity Phone Number</string>
+    <string name="charity_address">Charity Address</string>
+    <string name="charity_image">Charity Image</string>
+    <string name="dialog_title_donations">Doantions to</string>
+    <string name="charity">Charity</string>
+    <string name="donate">Donate</string>
+    <string name="confirm_donate">We will contact with you as soon as possible..</string>
+    <string name="firebase_donations">donations</string>
+    <string name="thanks_donations">Thank you for your Donations.</string>
+    <string name="set_profile_picture">Set Profile Picture</string>
+    <string name="uploading">Uploading...</string>
+    <string name="failed">Failed</string>
+    <string name="upload_image">Image uploaded successfully.</string>
+    <string name="try_again">Try Again.</string>
+    <string name="authorization">Authorization</string>
+    <string name="save_your_time_and_effort">Save your time and effort</string>
+    <string name="saving_people_life">Saving people life</string>
+    <string name="educate_and_create_communications">Educate / Create communication</string>
+    <string name="authorization_text">Dealing full of trust with all the authorized charities in your town.</string>
+    <string name="save_your_time_and_effort_text">Saving your time and your effort of searching for an trusted and authorized charities.</string>
+    <string name="saving_people_life_text">Your donation make a huge difference, One donate may save one soul.</string>
+    <string name="educate_and_create_communications_text">Donations and give away for good, Its Increase your self confidence and your Awareness of feeling with others.</string>
+
+    <string-array name="books_types">
+        <item>Adventure</item>
+        <item>Romance</item>
+        <item>Contemporary</item>
+        <item>Horror</item>
+        <item>Paranormal</item>
+        <item>Historical fiction</item>
+        <item>Cooking</item>
+        <item>Art</item>
+        <item>Self-help / Personal</item>
+        <item>Development</item>
+        <item>Motivational</item>
+        <item>Health</item>
+        <item>History</item>
+        <item>Travel</item>
+        <item>Guide / How-to</item>
+        <item>Families &amp; Relationships</item>
+        <item>Children’s</item>
+    </string-array>
+
+
+    <string-array name="furniture_types">
+        <item>Sofa</item>
+        <item>Coffee Table</item>
+        <item>Chest of Drawers</item>
+        <item>Bookcase</item>
+        <item>Armchair</item>
+        <item>Dining room table</item>
+        <item>Desk</item>
+        <item>Wardrobe</item>
+        <item>Bed</item>
+        <item>Outdoor table</item>
+        <item>Chair</item>
+    </string-array>
+
+    <string-array name="clothes_types">
+        <item>T-shirt</item>
+        <item>Sweater</item>
+        <item>Jacket</item>
+        <item>Coat</item>
+        <item>Jeans</item>
+        <item>Socks</item>
+        <item>Shorts</item>
+        <item>Tracksuit</item>
+        <item>vest</item>
+        <item>Pyjamas</item>
+        <item>Shoes</item>
+        <item>Bag</item>
+    </string-array>
+
+    <string-array name="medical_types">
+        <item>Manual or electric wheelchairs</item>
+        <item>Hospital beds</item>
+        <item>Walkers, crutches, canes</item>
+        <item>Traction equipment</item>
+        <item>Pressure mattresses</item>
+        <item>Insulin pumps</item>
+        <item>Breast pumps</item>
+        <item>Lifts</item>
+        <item>Bili lights and blankets</item>
+        <item>Kidney machines</item>
+        <item>Stationary or portable oxygen tanks</item>
+        <item>Ventilators</item>
+    </string-array>
+
+
+</resources>
