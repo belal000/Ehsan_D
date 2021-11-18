@@ -1,6 +1,5 @@
 package com.ehsandonation.donation;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,23 +15,23 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ehsandonation.utils.MapsActivity;
 import com.ehsandonation.R;
 import com.ehsandonation.firebase.FirebaseServices;
 import com.ehsandonation.model.Charity;
 import com.ehsandonation.model.Donation;
 import com.ehsandonation.model.User;
 import com.ehsandonation.utils.Tools;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
     private Toolbar toolbar;
     private TextView itemsSelected, charitySelected;
     private EditText shortDescription;
-    private ImageButton selectItems, selectCharity;
+    private ImageButton selectItems, selectCharity,select_location;
     private String[] items;
     private ArrayList<String> selectedItems = new ArrayList<>();
     private FirebaseAuth firebaseAuth;
@@ -59,6 +58,8 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
     private User user;
     private Button makeDonation;
     List<Charity> charityList;
+
+    public  static LatLng latLng ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,30 +110,55 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         loadCharity.setVisibility(View.VISIBLE);
 
         charityList = new ArrayList<>();
+        Query query = FirebaseFirestore.getInstance().collection(getString(R.string.firebase_charities)) .whereEqualTo("accountType" ,"Charity");
 
-        firebaseFirestore.collection(getString(R.string.firebase_charities))
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                charityList.add(document.toObject(Charity.class));
-                            }
-                            selectCharites(charityList);
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                for(DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()){
+
+
+                    if(documentChange.getType() == DocumentChange.Type.ADDED){
+
+
+                        Charity charity = documentChange.getDocument().toObject(Charity.class);
+
+                        charityList.add(charity);
+
 
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                loadCharity.setVisibility(View.GONE);
 
+                }
+                selectCharites(charityList);
+               // loadCharity.setVisibility(View.GONE);
             }
         });
+
+//        firebaseFirestore.collection(getString(R.string.firebase_charities))
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                charityList.add(document.toObject(Charity.class));
+//                            }
+//                            selectCharites(charityList);
+//                        } else {
+//                            Log.d(TAG, "Error getting documents: ", task.getException());
+//                        }
+//
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                loadCharity.setVisibility(View.GONE);
+//
+//            }
+//        });
     }
 
     private void selectCharites(final List<Charity> charities) {
@@ -213,6 +239,8 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         selectCharity = findViewById(R.id.select_charity);
         selectCharity.setOnClickListener(this);
         charitySelected = findViewById(R.id.charity_selected);
+        select_location=findViewById(R.id.select_location);
+        select_location.setOnClickListener(this);
 
         if (charitiesName == null || charitiesName.size() == 0) {
             charitySelected.setText(getString(R.string.no_charity_selected));
@@ -290,7 +318,16 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
 
                 break;
 
+            case R.id.select_location:
+                selectLocation();
+                break;
+
         }
+    }
+
+    private void selectLocation() {
+
+        startActivity(new Intent(getBaseContext() , MapsActivity.class));
     }
 
     private boolean validateItem() {
@@ -376,6 +413,9 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         donation.setDonationImage(user.getProfileImageUrl());
         donation.setDonationPhone(user.getPhoneNumber());
         donation.setDonationEmail(user.getEmailAddress());
+        donation.setLat(latLng.latitude);
+        donation.setLng(latLng.longitude);
+
 
         return donation;
     }

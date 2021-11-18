@@ -70,7 +70,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/swipe_up_handle"
-                            android:tint="@color/blue_grey_900" />
+                            app:tint="@color/blue_grey_900" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/swipe_up_handle"
-                            android:tint="@color/blue_grey_900" />
+                            app:tint="@color/blue_grey_900" />
 
                         <EditText
                             android:id="@+id/short_description"
@@ -155,6 +155,65 @@
                             android:textColor="@color/blue_grey_900"
                             android:textColorHint="@color/blue_grey_900"
                             android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spacing_medium" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:text="@string/select_location"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/blue_grey_900"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/swipe_up_handle"
+                            app:tint="@color/blue_grey_900" />
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/select_location"
+                                android:layout_width="75dp"
+                                android:layout_height="104dp"
+                                android:layout_gravity="start|center"
+                                android:layout_margin="20dp"
+                                android:background="?android:selectableItemBackground"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_location_24"
+                                android:tint="@color/blue_grey_900" />
+
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -193,7 +252,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/swipe_up_handle"
-                            android:tint="@color/blue_grey_900" />
+                            app:tint="@color/blue_grey_900" />
 
                         <LinearLayout
                             android:layout_width="match_parent"

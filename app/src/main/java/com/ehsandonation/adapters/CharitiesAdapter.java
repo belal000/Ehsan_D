@@ -2,10 +2,8 @@ package com.ehsandonation.adapters;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +20,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ehsandonation.utils.MapsActivity;
 import com.ehsandonation.R;
-import com.ehsandonation.contact_us.ContactActivity;
 import com.ehsandonation.holders.CharitiesViewHolder;
 import com.ehsandonation.model.Charity;
 import com.ehsandonation.utils.Const;
@@ -97,6 +94,15 @@ public class CharitiesAdapter extends RecyclerView.Adapter<CharitiesViewHolder> 
 
         UniversalImageLoader.setImage(charity.getChairtyImage(), imageView, null, "");
 
+        dialog.findViewById(R.id.dialog_loc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+                getLocation(charity);
+            }
+        });
+
         dialog.findViewById(R.id.dialog_call).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +141,15 @@ public class CharitiesAdapter extends RecyclerView.Adapter<CharitiesViewHolder> 
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+    }
+
+    private void getLocation(Charity charity) {
+        Intent intent=new Intent(context, MapsActivity.class);
+        intent.putExtra("lat" ,charity.getLat());
+
+        intent.putExtra("lng" ,charity.getLng());
+
+        context.startActivity(intent);
     }
 
 

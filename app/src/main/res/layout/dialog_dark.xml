@@ -72,6 +72,16 @@
             android:layout_marginTop="10dp">
 
             <ImageButton
+                android:id="@+id/dialog_loc"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="?android:selectableItemBackground"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_loc_24"
+                />
+
+            <ImageButton
                 android:id="@+id/dialog_call"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

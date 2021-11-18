@@ -21,10 +21,12 @@ import com.ehsandonation.model.Charity;
 import com.ehsandonation.utils.Tools;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -87,17 +89,26 @@ public class CharitableOrganizations extends Fragment {
     private void getCharities() {
 
         charityList = new ArrayList<>();
+        Query query = FirebaseFirestore.getInstance().collection(getString(R.string.firebase_charities)) .whereEqualTo("accountType" ,"Charity");
 
-        firebaseFirestore.collection(context.getString(R.string.firebase_charities))
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+               query.addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
 
-                        List<Charity> charities = queryDocumentSnapshots.toObjects(Charity.class);
+                         for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()){
+                             if(documentChange.getType() == DocumentChange.Type.ADDED){
 
-                        loadCharites.setVisibility(View.GONE);
 
-                        setupRecyclerViewShops(charities);
+                                 Charity charity = documentChange.getDocument().toObject(Charity.class);
+
+                                 charityList.add(charity);
+                                 loadCharites.setVisibility(View.GONE);
+                                 setupRecyclerViewShops(charityList);
+                                 charitiesAdapter.notifyDataSetChanged();
+                             }
+                         }
+//
                     }
                 });
     }

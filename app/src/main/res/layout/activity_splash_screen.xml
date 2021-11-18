@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:src="@mipmap/saving_people"
-            android:tint="@color/green_300" />
+            app:tint="@color/green_300" />
 
         <TextView
             android:layout_width="match_parent"

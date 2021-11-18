@@ -66,7 +66,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:src="@drawable/swipe_up_handle"
-                        android:tint="@color/blue_grey_900" />
+                        app:tint="@color/blue_grey_900" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginTop="@dimen/spacing_large"
                         android:layout_marginRight="@dimen/spacing_large"
-                        android:gravity="center_horizontal"
+                       android:layout_gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -86,14 +86,14 @@
 
                             <com.mikhaellopez.circularimageview.CircularImageView
                                 android:id="@+id/about_us_image_1"
-                                android:layout_width="125dp"
-                                android:layout_height="125dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="5dp"
                                 app:civ_border="true"
                                 app:civ_border_color="@color/blue_grey_900"
                                 app:civ_border_width="2dp"
                                 app:civ_shadow="true"
-                                app:civ_shadow_radius="0"
-                                android:layout_margin="5dp"/>
+                                app:civ_shadow_radius="0" />
 
                             <TextView
                                 android:id="@+id/about_us_name_1"
@@ -102,8 +102,8 @@
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/blue_grey_900"
+                                android:textSize="12sp"
                                 android:textStyle="bold"
-                                android:textSize="16dp"
                                 app:fontFamily="monospace" />
 
                             <TextView
@@ -113,9 +113,11 @@
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_60"
                                 app:fontFamily="monospace"
-                                />
+                                android:layout_marginStart="4dp"/>
 
                         </LinearLayout>
+
+
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -126,14 +128,14 @@
 
                             <com.mikhaellopez.circularimageview.CircularImageView
                                 android:id="@+id/about_us_image_2"
-                                android:layout_width="125dp"
-                                android:layout_height="125dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="5dp"
                                 app:civ_border="true"
                                 app:civ_border_color="@color/blue_grey_900"
                                 app:civ_border_width="2dp"
                                 app:civ_shadow="true"
-                                app:civ_shadow_radius="0"
-                                android:layout_margin="5dp"/>
+                                app:civ_shadow_radius="0" />
 
                             <TextView
                                 android:id="@+id/about_us_name_2"
@@ -142,12 +144,50 @@
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/blue_grey_900"
+                                android:textSize="12sp"
                                 android:textStyle="bold"
-                                android:textSize="16dp"
                                 app:fontFamily="monospace" />
 
                             <TextView
                                 android:id="@+id/about_us_job_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_60"
+                                app:fontFamily="monospace" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.mikhaellopez.circularimageview.CircularImageView
+                                android:id="@+id/about_us_image_3"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="5dp"
+                                app:civ_border="true"
+                                app:civ_border_color="@color/blue_grey_900"
+                                app:civ_border_width="2dp"
+                                app:civ_shadow="true"
+                                app:civ_shadow_radius="0" />
+
+                            <TextView
+                                android:id="@+id/about_us_name_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/blue_grey_900"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:fontFamily="monospace" />
+
+                            <TextView
+                                android:id="@+id/about_us_job_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
@@ -179,28 +219,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/spacing_large"
                     android:paddingLeft="@dimen/spacing_mlarge"
+                    android:paddingTop="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_mlarge"
-                    android:paddingTop="@dimen/spacing_large">
+                    android:paddingBottom="@dimen/spacing_large">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
                         android:gravity="center"
                         android:text="@string/mission"
-                        android:fontFamily="monospace"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/blue_grey_900"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="4dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:tint="@color/blue_grey_900"
-                        android:src="@drawable/swipe_up_handle" />
+                        android:src="@drawable/swipe_up_handle"
+                        app:tint="@color/blue_grey_900" />
 
                     <TextView
                         android:id="@+id/about_us_long_text"
@@ -231,17 +271,17 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/spacing_large"
                     android:paddingLeft="@dimen/spacing_mlarge"
+                    android:paddingTop="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_mlarge"
-                    android:paddingTop="@dimen/spacing_large">
+                    android:paddingBottom="@dimen/spacing_large">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
                         android:gravity="center"
                         android:text="@string/address"
-                        android:fontFamily="monospace"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/blue_grey_900"
                         android:textStyle="bold" />
@@ -251,8 +291,8 @@
                         android:layout_height="4dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:tint="@color/blue_grey_900"
-                        android:src="@drawable/swipe_up_handle" />
+                        android:src="@drawable/swipe_up_handle"
+                        app:tint="@color/blue_grey_900" />
 
 
                     <TextView

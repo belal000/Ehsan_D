@@ -3,10 +3,15 @@ package com.ehsandonation.firebase;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ehsandonation.home.MainActivity;
@@ -24,9 +29,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FirebaseServices {
 
@@ -91,7 +99,7 @@ public class FirebaseServices {
 
     }
 
-    public void addDonationToCharity(Donation donation) {
+    public void addDonationToCharity(final Donation donation) {
         Map<String, Object> newDonation = new HashMap<>();
         newDonation.put("userID", donation.getUserID());
         newDonation.put("itemsDonations", donation.getItemsDonations());
@@ -101,6 +109,8 @@ public class FirebaseServices {
         newDonation.put("donationImage", donation.getDonationImage());
         newDonation.put("donationPhone", donation.getDonationPhone());
         newDonation.put("donationEmail", donation.getDonationEmail());
+        newDonation.put("lat",donation.getLat());
+        newDonation.put("lng",donation.getLng());
 
         DocumentReference documentReference = firebaseFirestore.collection(context.getString(R.string.firebase_charities))
                 .document(donation.getCharityID())
@@ -114,11 +124,45 @@ public class FirebaseServices {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        ((AppCompatActivity) context).finish();
+                        //((AppCompatActivity) context).finish();
+                        showRating(donation.getDonationName(),donation.getDonationEmail(),donation.getDonationImage());
                         Tools.showMessage(context, context.getString(R.string.thanks_donations));
 
                     }
                 });
+    }
+
+    private void showRating(String name,String email,String imgUrl) {
+
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_rating , null);
+
+        RatingBar ratingBar = view.findViewById(R.id.ratingBar);
+
+        Button btnDone = view.findViewById(R.id.btnDone);
+
+        TextView txtFullName = view.findViewById(R.id.txtFullName);
+
+        TextView txtDepartment = view.findViewById(R.id.txtDepartment);
+
+        CircleImageView img_rating=view.findViewById(R.id.img_rating);
+
+        txtFullName.setText(name);
+        txtDepartment.setText(email);
+        if (!imgUrl.isEmpty())
+            Picasso.get().load(imgUrl).into(img_rating);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setView(view);
+
+        alertDialog.show();
+
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AppCompatActivity) context).finish();
+                Tools.showMessage(context,"Thank you for your rate");
+            }
+        });
     }
 
     public void addNewUser(User user, final ProgressBar signUpLoading) {
@@ -130,6 +174,7 @@ public class FirebaseServices {
         newUser.put("phoneNumber", user.getPhoneNumber().trim());
         newUser.put("profileImageUrl", "empty");
         newUser.put("accountType", "Donation");
+
 
         firebaseFirestore.collection(context.getString(R.string.firebase_users)).document(this.userID)
                 .set(newUser)
